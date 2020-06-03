@@ -1,4 +1,4 @@
-const quizzes = [
+/*const quizzes = [
     {   id: 1,
         question: "Capital of Italy",
         answer: "Rome"
@@ -65,4 +65,17 @@ exports.destroy = (quiz) => {
     if (index >= 0) {
         quizzes.splice(index,1);
     }
+};*/
+module.exports = function (sequelize, DataTypes) {
+    return sequelize.define('quiz',
+        {
+            question: {
+                type: DataTypes.STRING,
+                validate: {notEmpty: {msg: "Question must not be empty"}}
+            },
+            answer: {
+                type: DataTypes.STRING,
+                validate: {notEmpty: {msg: "Answer must not be empty"}}
+            }
+        });
 };
